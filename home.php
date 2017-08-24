@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <!--connect db -->
+<?php include("config.php"); ?>
 <html lang="pt-BR">
 	<head>	
 		<meta charset="utf-8">
@@ -107,6 +108,29 @@
 			{
 				margin-top: 10px;
 			}
+			#tst
+			{
+				margin: 0px 10px;
+			}
+			.espacamentoform .input-group{
+				height: 35px;
+				margin-bottom: 20px;
+
+			}
+			.espacamentoform
+			{
+				padding-right: 500px;
+			}
+			h1
+			{
+				color: #007BFF;
+				margin-bottom: 30px;
+				border-bottom: solid #007BFF;
+			}
+			.espacamentoform button{
+				height: 35px;
+				font-size: 12px;
+			}
 		</style>
 
 	</head>
@@ -115,7 +139,7 @@
 			<a class="navbar-brand" <?php print" href=home.php?id=".@$_REQUEST["id"]."&email=".@$_REQUEST["email"]; ?> >TIME GRID MAKER</a>
 
 			<span class="navbar">
-		    	<?php print @$_REQUEST["email"]; ?> &nbsp; <a <?php print "href='?page=adusuario&id=".$_REQUEST["id"]."&email=".$_REQUEST["email"]."'" ?>> <i class="fa fa-cog fa-lg" aria-hidden="true"></i></a> &nbsp; <a href="index.php"><i id="test" class="fa fa-sign-out fa-lg" aria-hidden="true"></i> </a>
+		    	<?php print @$_REQUEST["email"]; ?><a <?php print "href='?page=adusuario&id=".$_REQUEST["id"]."&email=".$_REQUEST["email"]."'" ?>> <i id="tst" class="fa fa-cog fa-lg" aria-hidden="true"></i></a><a href="index.php"><i id="test" class="fa fa-sign-out fa-lg" aria-hidden="true"></i> </a>
 		    </span>
 		</nav>
 
@@ -234,7 +258,24 @@
 				}
 				
 			}
-
+			function validaSenha()
+			{
+				$senha = $("#senha_login").val();
+				$senha_confirmar = $("#senha_login_conf").val();
+				if($senha_confirmar.length >= 5)
+				{
+					if(!($senha === $senha_confirmar))
+					{
+						$('#senha_login_conf').popover('show');
+						$("#enviaForm").prop("disabled",true);
+					}
+					else
+					{
+						$('#senha_login_conf').popover('hide');
+						$("#enviaForm").prop("disabled",false);
+					}
+				}
+			}
 		</script>
 		
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -41,5 +41,24 @@
 				header("Location: login.php?res=notok");
 			}
 		break;
+
+		case "validar-atualizar":
+			$id = $_REQUEST["id"];
+			$email = $_REQUEST["email_atualizar"];
+			$senha = $_REQUEST["senha_atualizar"];
+
+			$sql = "SELECT * FROM `usuarios` WHERE `email_usuario` = '$email_login'";
+
+			$result = $conn->query($sql);
+			
+			if(!($result > 0))
+			{
+				header("Location: salvar.php?id=".$id."&email_atualizar=".$email."&senha_atualizar=".$senha);
+			}
+			else
+			{
+				header("Location: adusuario.php?res=notok");
+			}
+		break;
 	}
 ?>

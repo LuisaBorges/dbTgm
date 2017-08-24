@@ -12,5 +12,16 @@
 
 			header("Location: cadastro.php?res=ok");
 		break;
+		case "atualizar-usuario":
+			$id = $_REQUEST["id"];
+			$email = $_REQUEST["email_atualizar"];
+			$senha = $_REQUEST["senha_atualizar"];
+
+			$sql = "UPDATE `usuarios` SET `email_usuario` = '$email' AND `senha_login` = '$senha' WHERE `usuarios`.`id_usuarios` = '$id'";
+
+			$conn->query($sql);
+
+			header("Location: adusuario.php?res=ok&id=".$id."email=".$email);
+		break;
 	}
 ?>

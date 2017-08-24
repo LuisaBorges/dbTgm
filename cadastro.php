@@ -94,7 +94,7 @@
 						<div class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></div>
 						<input type="password" class="form-control" id="senha_login_conf" oninput="javascript: validaSenha()" placeholder="Confirme a senha (Mínimo 5 caracteres)" minlength="5" maxlength="20" data-container="body" data-toggle="popover" data-placement="right" data-content="As senhas estão diferentes." required>
 					</div>					
-					<button type="submit" class="btn btn-primary btn-lg btn-block" id="enviaForm">Login</button>
+					<button type="submit" class="btn btn-primary btn-lg btn-block" id="enviaForm">Cadastrar</button>
 				</form>
 			</div>
 		</div>
