@@ -1,0 +1,94 @@
+body
+{
+	width: 100%;
+}
+.container
+{
+	position: relative;
+	padding: 10px 0px 0px 10px;
+	margin: 0;
+}
+.leftDiv
+{
+	width: 60px;
+	border: 1px solid #C0C0C0;
+	height: 100px;
+	position: absolute;
+	left: 0;
+}
+.rightDiv
+{
+	width: 100px;
+	border: 1px solid #C0C0C0;
+	height: 100px;
+	position: absolute;
+	right: 0;
+}
+#faDoc
+{
+	margin-right: 15px;
+}
+#faTur
+{
+	margin-right: 10px;
+}
+#faDis
+{
+	margin-right: 13px;
+}
+#faGe
+{
+	margin-right: 15px;
+}
+#faChe
+{
+	margin-left: 90px;
+}
+#faChe1
+{
+	margin-left: 97px;
+}
+#faChe2
+{
+	margin-left: 80.7px;
+}
+#test
+{
+	color: black;
+}
+#test:hover
+{
+	color: #0000CD;
+}
+.clDoc:hover
+{
+	color: #0000CD;
+}
+.clTur:hover
+{
+	color: #0000CD;
+}
+.clDis:hover
+{
+	color: #0000CD;
+}
+.clGer:hover
+{
+	color: #0000CD;
+}
+.hiddenHidden
+{
+	display: none;
+}
+.liHo:hover
+{
+	color: #0000CD;
+}
+#fafa
+{
+	margin-right: 10px;
+}
+.ulHo
+{
+	list-style-type: none;
+}

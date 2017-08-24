@@ -1,0 +1,19 @@
+body{
+	background-color: #DCDCDC;
+}
+.container{
+	height: 430px;
+	width: 520px;
+	margin: 160px auto auto auto;
+	border: 1px solid #C0C0C0;
+	box-shadow: 5px 5px 7px #696969;
+	background-color: white;
+}
+.titulo{
+	font-family: 'Raleway', sans-serif;
+	text-align: center;
+	margin-top: 70px;
+}
+.titulo h1{
+	font-size: 60px;
+}
