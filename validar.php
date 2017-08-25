@@ -42,22 +42,62 @@
 			}
 		break;
 
-		case "validar-atualizar":
+		case "validar-atualizar-email":
 			$id = $_REQUEST["id"];
 			$email = $_REQUEST["email_atualizar"];
 			$senha = $_REQUEST["senha_atualizar"];
 
-			$sql = "SELECT * FROM `usuarios` WHERE `email_usuario` = '$email_login'";
-
-			$result = $conn->query($sql);
+			$sql = "SELECT * FROM `usuarios` WHERE `email_usuario` = '$email'";
 			
-			if(!($result > 0))
-			{
-				header("Location: salvar.php?id=".$id."&email_atualizar=".$email."&senha_atualizar=".$senha);
+			$result = $conn->query($sql);
+
+			if($result->num_rows>0)
+			{	
+				header("Location: home.php?page=adusuario&res=notok&id=".$id."&email=".$email);
 			}
 			else
 			{
-				header("Location: adusuario.php?res=notok");
+				$sql = "SELECT * FROM `usuarios` WHERE `id_usuarios` = '$id'";
+
+				$result = $conn->query($sql);
+				
+				if($result->num_rows>0)
+				{
+					$row = $result->fetch_assoc();
+
+					if($senha === $row["senha_usuario"])
+					{
+						header("Location: salvar.php?acao=atualizar-usuario-email&id=".$id."&email_atualizar=".$email);
+					}
+				}
+				else
+				{
+					header("Location: home.php?page=adusuario&res=notok&id=".$id."&email=".$email);
+				}
+			}
+		break;
+
+		case "validar-atualizar-senha":
+			$id = $_REQUEST["id"];
+			$senha = $_REQUEST["senha_atualizar"];
+			$senhaNova = $_REQUEST["senha_atualizar_nova"];
+
+			$sql = "SELECT * FROM `usuarios` WHERE `id_usuarios` = '$id'";
+
+			$result = $conn->query($sql);
+
+			if($result->num_rows>0)
+			{
+				$row = $result->fetch_assoc();
+
+				if($senha === $row["senha_usuario"])
+				{
+					header("Location: salvar.php?acao=atualizar-usuario-senha&id=".$id."&senha_nova=".$senhaNova);
+				}
+			}
+			else
+			{
+				print "<script>location.href='?page=adusuario&res=notok&id=".$id."email=".$row["email_usuario"].";</script>";
 			}
 		break;
 	}

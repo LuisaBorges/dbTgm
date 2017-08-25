@@ -2,7 +2,8 @@
 <!--connect db -->
 <?php include("config.php"); ?>
 <html lang="pt-BR">
-	<head>	
+	<head>
+		
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		
@@ -94,7 +95,7 @@
 			{
 				list-style-type: none;
 			}
-			a:link, a:visited
+			a:link, a:visited 
 			{
 				text-decoration: none;
 				color: black;
@@ -103,7 +104,7 @@
 			{
 				color: #0000CD;
 			}
-
+			
 			.row
 			{
 				margin-top: 10px;
@@ -124,22 +125,69 @@
 			h1
 			{
 				color: #007BFF;
+				/*margin-top: 10px;*/
 				margin-bottom: 30px;
-				border-bottom: solid #007BFF;
+				/*border-bottom: solid #007BFF;*/
+				border-bottom: solid #A2A4A6;
 			}
 			.espacamentoform button{
 				height: 35px;
 				font-size: 12px;
 			}
-		</style>
+			#enviaForm, #enviaFormDeletar
+			{
+				margin: 30px 0px;
+			}
+ 			
+ 			#enviaFormPadrao
+ 			{
+ 				margin-top: 30px;
+ 				width: 220px;
+ 			}
+ 			#limpaCampos
+ 			{
+ 				margin-top: 30px;
+ 				margin-left: 10px;
+ 				width: 220px;
+ 			}
 
+			.subLink
+			{
+				color: #007BFF;
+			}
+			.subLink:hover
+			{
+				color: #0000CD;
+			}
+			.masterTitulo
+			{
+				margin-bottom: 0px;
+			}
+			.subTitulo
+			{
+				margin-bottom: 30px;
+				color: #868E9C;
+			}
+			.cadastrarDocenteClass
+			{
+				margin-bottom: 50px;
+			}
+			.associarDisciplinaClass
+			{
+				margin-bottom: 50px;
+			}
+			#sombraNavbar
+			{
+				box-shadow: 0px 2px 5px #888888;
+			}
+		</style>
 	</head>
 	<body>		
-		<nav class="navbar navbar-dark bg-primary">
+		<nav id="sombraNavbar" class="navbar navbar-dark bg-primary">
 			<a class="navbar-brand" <?php print" href=home.php?id=".@$_REQUEST["id"]."&email=".@$_REQUEST["email"]; ?> >TIME GRID MAKER</a>
 
 			<span class="navbar">
-		    	<?php print @$_REQUEST["email"]; ?><a <?php print "href='?page=adusuario&id=".$_REQUEST["id"]."&email=".$_REQUEST["email"]."'" ?>> <i id="tst" class="fa fa-cog fa-lg" aria-hidden="true"></i></a><a href="index.php"><i id="test" class="fa fa-sign-out fa-lg" aria-hidden="true"></i> </a>
+		    	<?php print @$_REQUEST["email"]; ?><a href="<?php echo "?page=adusuario&id=".$_REQUEST["id"]."&email=".$_REQUEST["email"] ?>"> <i id="tst" class="fa fa-cog fa-lg" aria-hidden="true"></i></a><a href="index.php"><i id="test" class="fa fa-sign-out fa-lg" aria-hidden="true"></i> </a>
 		    </span>
 		</nav>
 
@@ -276,11 +324,51 @@
 					}
 				}
 			}
+			function validaSenhaNova()
+			{
+				$senha = $("#senha_login_nova").val();
+				$senha_confirmar = $("#senha_login_conf2").val();
+				if($senha_confirmar.length >= 5)
+				{
+					if(!($senha === $senha_confirmar))
+					{
+						$('#senha_login_conf2').popover('show');
+						$("#enviaForm").prop("disabled",true);
+					}
+					else
+					{
+						$('#senha_login_conf2').popover('hide');
+						$("#enviaForm").prop("disabled",false);
+					}
+				}
+			}
+			function validaMensagem()
+			{
+				$msg = $("#deletar").val();
+				if($msg == "Deletar")
+				{
+					$("#enviaFormDeletar").prop("disabled",false);
+				}
+				else
+				{
+					$("#enviaFormDeletar").prop("disabled",true);
+				}
+			}
+			function limpaOsCampos(opcPage)
+			{
+				if(opcPage == 1)
+				{
+					$("#nome_docente").val("");
+					$("#cpf_docente").val("");
+					$("#matricula_docente").val("");
+				}
+			}
 		</script>
+		
 		
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-
+	    
 	</body>
 </html>
