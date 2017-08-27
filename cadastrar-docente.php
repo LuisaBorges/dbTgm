@@ -24,14 +24,14 @@
 		</div>
 		<label for="cpf_docente">CPF</label>
 		<div class="input-group">
-			<input type="text" class="form-control" name="cpf_docente" id="cpf_docente" minlength="11" maxlength="11" required>
+			<input type="text" class="form-control" name="cpf_docente" id="cpf_docente" minlength="14" maxlength="14" onchange="javascript: mascaraCpf()" data-container="body" data-toggle="popover" data-placement="right" data-content="Por favor, digite um CPF válido."  required>
 		</div>
 		<label for="matricula_docente">Matrícula</label>
 		<div class="input-group">
 			<input type="text" class="form-control" name="matricula_docente" id="matricula_docente" minlength="5" maxlength="20" required>
 		</div>					
-		<button type="submit" class="btn btn-primary btn-lg" id="enviaFormPadrao">Cadastrar</button>
-		<button type="button" class="btn btn-secondary btn-lg" id="limpaCampos" onclick="javascript: limpaOsCampos(1)">Limpar</button>
+		<button type="submit" class="btn btn-primary btn-lg enviaFormPadrao" >Cadastrar</button>
+		<button type="reset" class="btn btn-secondary btn-lg limpaCampos" >Limpar</button>
 	</form>
 </div>
 <div class="associarDisciplinaClass">

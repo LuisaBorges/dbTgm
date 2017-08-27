@@ -55,11 +55,11 @@
 			{
 				margin-left: 80.7px;
 			}
-			#test
+			.testE
 			{
 				color: black;
 			}
-			#test:hover
+			.testE:hover
 			{
 				color: #0000CD;
 			}
@@ -95,12 +95,16 @@
 			{
 				list-style-type: none;
 			}
-			a:link, a:visited 
+			.fa-gear:before, .fa-cog:before {
+			    content: "\f013";
+			    color: black;
+			}
+			a.semNada:link, a.semNada:visited 
 			{
 				text-decoration: none;
 				color: black;
 			}
-			a:hover
+			a.semNada:hover
 			{
 				color: #0000CD;
 			}
@@ -139,12 +143,12 @@
 				margin: 30px 0px;
 			}
  			
- 			#enviaFormPadrao
+ 			.btn.btn-primary.btn-lg.enviaFormPadrao
  			{
  				margin-top: 30px;
  				width: 220px;
  			}
- 			#limpaCampos
+ 			.btn.btn-secondary.btn-lg.limpaCampos
  			{
  				margin-top: 30px;
  				margin-left: 10px;
@@ -180,6 +184,25 @@
 			{
 				box-shadow: 0px 2px 5px #888888;
 			}
+			#iconeEditar
+			{
+				color: green;
+			}
+			#iconeExcluir
+			{
+				color: red;
+			}
+			.centralizaIcone
+			{
+				text-align: center;
+			}
+			.testbtn
+			{
+				text-decoration: none;
+				background-color: unset;
+				border: none;
+				cursor: pointer;
+			}
 		</style>
 	</head>
 	<body>		
@@ -187,7 +210,7 @@
 			<a class="navbar-brand" <?php print" href=home.php?id=".@$_REQUEST["id"]."&email=".@$_REQUEST["email"]; ?> >TIME GRID MAKER</a>
 
 			<span class="navbar">
-		    	<?php print @$_REQUEST["email"]; ?><a href="<?php echo "?page=adusuario&id=".$_REQUEST["id"]."&email=".$_REQUEST["email"] ?>"> <i id="tst" class="fa fa-cog fa-lg" aria-hidden="true"></i></a><a href="index.php"><i id="test" class="fa fa-sign-out fa-lg" aria-hidden="true"></i> </a>
+		    	<?php print @$_REQUEST["email"]; ?><a href="<?php echo "?page=adusuario&id=".$_REQUEST["id"]."&email=".$_REQUEST["email"] ?>"> <i id="tst" class="fa fa-cog fa-lg testE" aria-hidden="true"></i></a><a href="index.php"><i class="fa fa-sign-out fa-lg testE" aria-hidden="true"></i> </a>
 		    </span>
 		</nav>
 
@@ -201,11 +224,16 @@
 						<div id="abaDoc" class="hiddenHidden">
 							<ul class="ulHo">
 								<li class="liHo">
-								<a <?php print "href='?page=cadastrar-docente&id=".$_REQUEST["id"]."&email=".$_REQUEST["email"]."'" ?>>
+								<a class="semNada" <?php print "href='?page=cadastrar-docente&id=".$_REQUEST["id"]."&email=".$_REQUEST["email"]."'" ?>>
 								<i id="fafa" class="fa fa-user-plus" aria-hidden="true"></i>Cadastrar Docente</li></a>
 
-								<li class="liHo"> <i id="fafa" class="fa fa-eye" aria-hidden="true"></i>Visualizar Docente</li>
-								<li class="liHo"> <i id="fafa" class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar Docente</li>
+								<li class="liHo">
+								<a class="semNada"<?php print "href='?page=visualizar-docente&id=".$_REQUEST["id"]."&email=".$_REQUEST["email"]."'" ?>>
+								<i id="fafa" class="fa fa-eye" aria-hidden="true"></i>Visualizar Docente</li></a>
+
+								<li class="liHo"> 
+								<a class="semNada"<?php print "href='?page=editar-docente&id=".$_REQUEST["id"]."&email=".$_REQUEST["email"]."'" ?>>
+								<i id="fafa" class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar Docente</li></a>
 							</ul>
 						</div>
 
@@ -225,9 +253,9 @@
 
 						<div id="abaDis" class="hiddenHidden">
 							<ul class="ulHo">
-								<li class="liHo"> <i id="fafa" class="fa fa-user-plus" aria-hidden="true"></i>Cadastrar Disciplina</li>
-								<li class="liHo"> <i id="fafa" class="fa fa-eye" aria-hidden="true"></i>Visualizar Disciplina</li>
-								<li class="liHo"> <i id="fafa" class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar Disciplina</li>
+								<li class="liHo"><a class="semNada"<?php print "href='?page=cadastrar-disciplina&id=".$_REQUEST["id"]."&email=".$_REQUEST["email"]."'" ?>> <i id="fafa" class="fa fa-user-plus" aria-hidden="true"></i>Cadastrar Disciplina</li></a>
+								<li class="liHo"> <a class="semNada"<?php print "href='?page=visualizar-disciplina&id=".$_REQUEST["id"]."&email=".$_REQUEST["email"]."'" ?>><i id="fafa" class="fa fa-eye" aria-hidden="true"></i>Visualizar Disciplina</li></a>
+								<li class="liHo"> <a class="semNada"<?php print "href='?page=editar-disciplina&id=".$_REQUEST["id"]."&email=".$_REQUEST["email"]."'" ?>><i id="fafa" class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar Disciplina</li></a>
 							</ul>
 						</div>
 
@@ -243,7 +271,26 @@
 
 							case "cadastrar-docente":
 								include("cadastrar-docente.php");
+							break;							
+							case "visualizar-docente":
+								include("visualizar-docente.php");
 							break;
+							case "editar-docente":
+								include("editar-docente.php");
+							break;
+
+
+							case "cadastrar-disciplina":
+								include("cadastrar-disciplina.php");
+							break;
+							case "visualizar-disciplina":
+								include("visualizar-disciplina.php");
+							break;
+							case "editar-disciplina":
+								include("editar-disciplina.php");
+							break;
+
+
 							case "adusuario":
 								include("adusuario.php");
 							break;
@@ -354,13 +401,82 @@
 					$("#enviaFormDeletar").prop("disabled",true);
 				}
 			}
-			function limpaOsCampos(opcPage)
+			function mascaraCpf()
 			{
-				if(opcPage == 1)
+				var cpf = document.getElementById("cpf_docente").value;
+				var aux = cpf.substr(0,3);
+				var novoCpf = aux;
+
+				aux = cpf.substr(3,3);
+				novoCpf = novoCpf + "." + aux;
+				aux = cpf.substr(6,3);
+				novoCpf = novoCpf + "." + aux;
+				aux = cpf.substr(9,2);
+				novoCpf = novoCpf + "-" + aux;
+				
+				if(cpf.length > 0)
 				{
-					$("#nome_docente").val("");
-					$("#cpf_docente").val("");
-					$("#matricula_docente").val("");
+					document.getElementById("cpf_docente").value = novoCpf;
+				}
+				else
+				{
+					respostaCpf(false);
+				}
+
+				if(validaCPF(cpf))
+				{
+					respostaCpf(false);
+				}
+				else
+				{
+					respostaCpf(true);
+				}
+			}
+			function validaCPF(cpf)
+			{
+			  var numeros, digitos, soma, i, resultado, digitos_iguais;
+			  digitos_iguais = 1;
+			  if (cpf.length < 11)
+					return false;
+			  for (i = 0; i < cpf.length - 1; i++)
+					if (cpf.charAt(i) != cpf.charAt(i + 1))
+						  {
+						  digitos_iguais = 0;
+						  break;
+						  }
+			  if (!digitos_iguais)
+					{
+					numeros = cpf.substring(0,9);
+					digitos = cpf.substring(9);
+					soma = 0;
+					for (i = 10; i > 1; i--)
+						  soma += numeros.charAt(10 - i) * i;
+					resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+					if (resultado != digitos.charAt(0))
+						  return false;
+					numeros = cpf.substring(0,10);
+					soma = 0;
+					for (i = 11; i > 1; i--)
+						  soma += numeros.charAt(11 - i) * i;
+					resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+					if (resultado != digitos.charAt(1))
+						  return false;
+					return true;
+					}
+			  else
+				  return false;
+			}
+			function respostaCpf(mostrar)
+			{
+				if(mostrar)
+				{
+					$('#cpf_docente').popover('show');
+					$("#enviaFormPadrao").prop("disabled",true);
+				}
+				else
+				{
+					$('#cpf_docente').popover('hide');
+					$("#enviaFormPadrao").prop("disabled",false);
 				}
 			}
 		</script>
